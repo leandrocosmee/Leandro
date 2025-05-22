@@ -1,0 +1,18 @@
+Sim, é vantajoso usar Tn(f, c, d) e Sn(f, c, d) de forma iterativa, 
+pois podemos calcular aproximações sucessivamente melhores com menos avaliações da função f, 
+desde que reutilizemos os valores anteriores.
+
+A abordagem forward (de T1 até Tn+10) é preferível à de backtracking, 
+pois permite interromper cedo se a precisão for atingida, além de facilitar a reutilização dos 
+valores previamente calculados.
+
+No caso de Tn, é possível construir T2n a partir de Tn aproveitando os valores já calculados 
+nos extremos dos subintervalos, precisando calcular apenas os valores nos novos pontos médios.
+
+No caso de Sn, uma reutilização semelhante é possível, embora mais complexa, pois os pontos 
+centrais usados na regra de Simpson precisam ser armazenados com mais cuidado.
+
+Na abordagem dinâmica, só subdividimos o intervalo [ci, di] na etapa n+1 se a diferença entre
+ T(f, ci, di) e S(f, ci, (ci+di)/2) for maior que ε / 2^(n+1). 
+Isso garante precisão e eficiência, evitando subdivisões desnecessárias.
+
